@@ -1,10 +1,8 @@
 package com.spring.t_app_1.product;
 
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import ch.qos.logback.core.net.SyslogOutputStream;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/products")
@@ -16,6 +14,27 @@ public class ProductController {
         System.err.println("Product inserted: " + payload);
 
         return payload;
+    }
+
+    @GetMapping("{id}")
+    public Product getProduct(@PathVariable Integer id )
+    {
+        System.out.println(id);
+        return new Product();
+    }
+
+    @PutMapping("{id}")
+    public String putProduct(@PathVariable Integer id)
+    {
+        System.out.println(id);
+        return "sucess";
+    }
+
+    @DeleteMapping("{id}")
+    public String deleteProduct(@PathVariable Integer id)
+    {
+        System.out.println(id);
+        return "user deleted";
     }
 
 }
